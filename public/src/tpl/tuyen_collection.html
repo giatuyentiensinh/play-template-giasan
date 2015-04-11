@@ -11,14 +11,27 @@
 	</div>
 	<hr />
 
-	<div class="row">
-		<div class="col-md-12">
-			<ul class="list-inline">
-				<li>Tuyen</li>
-				<li>Cao Hang</li>
-			</ul>
+	<div class="row" ng-controller="ShowCollection">
+		<div ng-repeat="(key, values) in data">
+		
+			<div class="col-md-2">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<div class="panel-title">{{key}}</div>
+					</div>
+					<div class="panel-body">
+						<div ng-repeat="value in values">
+							<p>{{value}}</p>
+						</div>
+					</div>
+				</div>
+			
+			</div>
+		
+		
 		</div>
+		
 	</div>
+
+	
 </div>
-
-

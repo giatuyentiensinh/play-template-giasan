@@ -300,7 +300,13 @@ angular.module('app')
               })
               .state('app.page.collection', {
             	  url: '/collection',
-            	  templateUrl: 'tpl/tuyen_collection.html'
+            	  templateUrl: 'tpl/tuyen_collection.html',
+            	  resolve: {
+                      deps: ['$ocLazyLoad',
+                        function( $ocLazyLoad){
+                          return $ocLazyLoad.load('js/controllers/showcollection.js');
+                      }]
+                  }
               })
               .state('app.docs', {
                   url: '/docs',

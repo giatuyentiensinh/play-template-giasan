@@ -4,6 +4,7 @@
 
 # Home page
 GET     /                           controllers.Application.index()
+GET		/resource	controllers.Application.showCollection()
 
 GET		/template	controllers.Assets.at(path="/public/src", file="index.html")
 

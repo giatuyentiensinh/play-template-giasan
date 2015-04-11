@@ -13,11 +13,19 @@ NOTE
 - file config.router.js: line 301
 	
   cau hinh khi click vao submenu "Show collection" -> mo file tuyen_collection
-  .state('app.page.collection', {
-            	  url: '/collection',
-            	  templateUrl: 'tpl/tuyen_collection.html'
-  })
-
+	.state('app.page.collection', {
+    	  url: '/collection',
+    	  templateUrl: 'tpl/tuyen_collection.html',
+    	  resolve: {
+              deps: ['$ocLazyLoad',
+                function( $ocLazyLoad){
+                  return $ocLazyLoad.load('js/controllers/showcollection.js');
+              }]
+          }
+    })
+    
+    them ng-controller="showCollection" trong file controllers/showcollection.js
+    
 - file tuyen_collection.html
 
   Noi dung context submenu "Show collection"  
