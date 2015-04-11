@@ -1,0 +1,19 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+
+GET		/template	controllers.Assets.at(path="/public/src", file="index.html")
+
+# Map static resources from the /public folder to the /assets URL path
+GET		/api/*file		controllers.Assets.at(path="/public/src/api", file)
+GET		/css/*file		controllers.Assets.at(path="/public/src/css", file)
+GET		/fonts/*file	controllers.Assets.at(path="/public/src/fonts", file)
+GET		/img/*file		controllers.Assets.at(path="/public/src/img", file)
+GET		/js/*file		controllers.Assets.at(path="/public/src/js", file)
+GET		/l10n/*file		controllers.Assets.at(path="/public/src/l10n", file)
+GET		/psd/*file		controllers.Assets.at(path="/public/src/psd", file)
+GET		/tpl/*file		controllers.Assets.at(path="/public/src/tpl", file)
+GET		/vendor/*file	controllers.Assets.at(path="/public/src/vendor", file)
