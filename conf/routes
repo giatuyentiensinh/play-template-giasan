@@ -5,6 +5,8 @@
 # Home page
 GET     /                           controllers.Application.index()
 GET		/resource	controllers.Application.showCollection()
+GET		/login		controllers.Application.login()
+POST	/login		controllers.Application.authenticator()
 
 GET		/template	controllers.Assets.at(path="/public/src", file="index.html")
 

@@ -10,13 +10,14 @@ import play.Configuration;
 import play.Play;
 
 import com.mongodb.DB;
+import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
 
 public class ModuleMongo {
 
 	private static MongoClient client = null;
 
-	protected static void initClient() {
+	public static void connect() {
 		String host = getConfig().getString("mongo.host");
 		int port = getConfig().getInt("mongo.port");
 		try {
@@ -25,8 +26,13 @@ public class ModuleMongo {
 			e.printStackTrace();
 		}
 	}
+	
+	protected static DBCollection getCollection(String dbname, String colname) {
+		DB db = client.getDB(dbname);
+		return db.getCollection(colname);
+	}
 
-	protected static void destroyClient() {
+	public static void disconnect() {
 		if (client != null)
 			client.close();
 	}

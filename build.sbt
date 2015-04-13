@@ -10,4 +10,4 @@ libraryDependencies ++= Seq(
   cache,
   javaWs,
   "org.mongojack" % "mongojack" % "2.1.0"
-)
+ )
