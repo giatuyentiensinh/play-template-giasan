@@ -8,11 +8,11 @@ public class Secured extends Security.Authenticator {
 
 	@Override
 	public String getUsername(Context ctx) {
-		return ctx.session().get("user");
+		return ctx.session().get("sessionUser");
 	}
 
 	@Override
 	public Result onUnauthorized(Context ctx) {
-		return redirect(routes.Application.index());
+		return redirect(routes.Application.login());
 	}
 }

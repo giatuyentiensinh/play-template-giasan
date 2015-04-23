@@ -304,7 +304,7 @@ angular.module('app')
             	  resolve: {
                       deps: ['$ocLazyLoad',
                         function( $ocLazyLoad){
-                          return $ocLazyLoad.load('js/controllers/showcollection.js');
+                          return $ocLazyLoad.load(['vendor/jquery/bootstrap.js', 'js/controllers/showcollection.js']);
                       }]
                   }
               })

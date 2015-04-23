@@ -3,12 +3,19 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
-GET		/resource	controllers.Application.showCollection()
-GET		/login		controllers.Application.login()
-POST	/login		controllers.Application.authenticator()
+GET     /           	controllers.Application.index()
+GET		/store/resource	controllers.Application.showCollection()
+GET		/login			controllers.Application.login()
+POST	/login			controllers.Application.authenticator()
 
-GET		/template	controllers.Assets.at(path="/public/src", file="index.html")
+
+POST	/store/elementcollection		controllers.Application.elementCollection()
+
+
+
+GET		/logout			controllers.Application.logout()
+
+GET		/template		controllers.Assets.at(path="/public/src", file="index.html")
 
 # Map static resources from the /public folder to the /assets URL path
 GET		/api/*file		controllers.Assets.at(path="/public/src/api", file)

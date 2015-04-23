@@ -9,29 +9,36 @@
 			<p>Show collection in mongodb</p>			
 		</div>
 	</div>
-	<hr />
-
+	<div class="well"><p class="text-center text-danger h4">Collection in mongo</p></div>
 	<div class="row" ng-controller="ShowCollection">
-		<div ng-repeat="(key, values) in data">
-		
-			<div class="col-md-2">
+		<div ng-repeat="(dbs, cols) in data">		
+			<!-- Database -->
+			<div class="col-md-4">
 				<div class="panel panel-primary">
 					<div class="panel-heading">
-						<div class="panel-title">{{key}}</div>
+						<div class="panel-title">{{dbs}}</div>
 					</div>
 					<div class="panel-body">
-						<div ng-repeat="value in values">
-							<p>{{value}}</p>
+						<!-- Collection -->
+						<div ng-repeat="col in cols">
+							<button class="btn btn-default" ng-click="loadDocument('{{dbs}}', '{{col}}')" data-toggle="collapse" data-target="#{{dbs}}{{$index}}">{{col}}</button>
+							<!-- Document -->
+							<div class="collapse table-responsive" id="{{dbs}}{{$index}}">
+								<table class="table table-hover" ng-repeat="document in info">
+									<tr ng-repeat="(key, value) in document">
+										<td class="info">{{$index}}</td>
+										<td class="danger">{{key}}</td>
+										<td class="warning">{{value}}</td>
+									</tr>
+								</table>
+							</div>
+							<!-- /Document -->
 						</div>
+						<!-- /Collection -->
 					</div>
 				</div>
-			
 			</div>
-		
-		
-		</div>
-		
+			<!-- /Database -->
+		</div>		
 	</div>
-
-	
 </div>

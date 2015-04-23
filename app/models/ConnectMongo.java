@@ -7,13 +7,15 @@ import java.util.Map;
 import java.util.Set;
 
 import play.Configuration;
+import play.Logger;
 import play.Play;
 
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 
-public class ModuleMongo {
+public class ConnectMongo {
 
 	private static MongoClient client = null;
 
@@ -24,17 +26,26 @@ public class ModuleMongo {
 			client = new MongoClient(host, port);
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
+			Logger.error("Mongodb not connection");
 		}
-	}
-	
-	protected static DBCollection getCollection(String dbname, String colname) {
-		DB db = client.getDB(dbname);
-		return db.getCollection(colname);
 	}
 
 	public static void disconnect() {
 		if (client != null)
 			client.close();
+	}
+
+	protected static DBCollection getCollection(String dbname, String colname) {
+		DB db = client.getDB(dbname);
+		return db.getCollection(colname);
+	}
+	
+	
+	public static List<DBObject> getDocument(String dbname, String colname) {
+		DBCollection collection = getCollection(dbname, colname);
+
+		List<DBObject> array = collection.find().toArray();
+		return array;		
 	}
 
 	public static Map<String, Set<String>> getCollections() {
@@ -46,7 +57,7 @@ public class ModuleMongo {
 			Set<String> collections = db.getCollectionNames();
 			map.put(dbname, collections);
 		});
-		
+
 		return map;
 	}
 
